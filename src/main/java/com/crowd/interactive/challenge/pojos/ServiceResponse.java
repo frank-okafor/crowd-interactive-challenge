@@ -18,16 +18,12 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ServiceResponse {
     private String message;
-    private String timestamp;
+    private String timestamp = LocalDateTime.now().toString();
     private Object data;
     private HttpStatus status;
 
-    public ServiceResponse(String message) {
+    public ServiceResponse(HttpStatus status, String message) {
 	this.message = message;
-	this.timestamp = LocalDateTime.now().toString();
-    }
-
-    public ServiceResponse(HttpStatus status) {
 	this.status = status;
     }
 }
